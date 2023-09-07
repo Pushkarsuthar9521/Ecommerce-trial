@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.section{
+        background-color: #8a7350;
+
+}
+h4{
+    text-align: center;
+    color: white;
+}
+
+.img{
+    background: url('./img/puma/m1.png');
+    background-position: center;
+    background-size: cover;
+    
+}
+.img2{
+    margin-top:10px;
+    background: url('./img/puma/m2.png');
+    background-position: center;
+    background-size: cover;
+    
+}
+
+.img3{
+    margin-top: 10px;
+    background: url('./img/puma/im3.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.vi{
+    /* margin-bottom: 20px; */
+}
