@@ -85,6 +85,8 @@ const smnav = document.getElementById("smnav");
 const togglebtn = document.getElementById("togglebtn");
 const searchbox = document.getElementById("search-box");
 const hidden = document.getElementById('hiddenPart');
+const searchForm = document.getElementById('searchform');
+const searchInput = document.getElementById('search-item');
 
 const togglenav= ()=>{
     if(!isnavOpen){
@@ -112,9 +114,23 @@ const togglesearch= ()=>{
         searchbox.classList.add("-translate-y-[50vh]");
         searchbox.classList.remove("translate-y-0");
         hidden.classList.remove("hidden");
-        // output='';
+        // searchForm.reset();
+        
     }
 }
+
+// //  clear search
+const clearSearch=()=>{
+    togglesearch();
+    displayResults(search(""));
+    searchForm.reset();
+}
+
+// const handleSearch = (e) =>{
+//     e.preventDefault();
+//     togglesearch();
+// }
+
 
 
 // searching method
@@ -125,35 +141,32 @@ const search = (query) =>{
 
     for(const item of cardData){
         const itemName = item.text.toLowerCase();
-        if(itemName.includes(query)){
+        const itemPrice = item.price;
+        if(itemName.includes(query) || itemPrice.includes(query)){
             results.push(item);
         }
     }
 
     return results;
-
     // const search_box = document.getElementById("search-item").value.toUpperCase();
-    
 
 }
 
 
-const displayResults=(results)=>{
+const displayResults=(Data)=>{
         // const searchResults = document.getElementById('searchResults');
-        let output1 ="";
-        for(const result of results){
-      output1 +=  `
-    <!-- card 1 -->
-    <div class=" w-full bg-white rounded-md p-4 border border-gray-200" id="card" >
+        let result ="";
+        for(const item of Data){
+      result +=  `
+    
+    <div class=" w-full bg-white rounded-md p-4 border cursor-pointer border-gray-200" id="card" >
       <div class=" flex flex-col gap-4">
         <div class=" w-full ">
-          <img src="${result.image}" alt="" />
+          <img src="${item.image}" alt="" />
         </div>
-
-        <!-- card-content  -->
         <div class="flex flex-col space-y-3 w-full px-1">
-          <h1 class="ttext-lg">${result.text}</h1>
-          <h2 class="text-base ">${result.price}</h2>
+          <h1 class="ttext-lg">${item.text}</h1>
+          <h2 class="text-base ">${item.price}</h2>
         </div>
       </div>
     </div>
@@ -161,15 +174,22 @@ const displayResults=(results)=>{
     `
         }
 
-        document.querySelector('.searchResults').innerHTML = output1;
+        document.querySelector('.searchResults').innerHTML = result;
 }
 
 // event listner for the input field
-const searchInput = document.getElementById('search-item');
-searchInput.addEventListener('input', ()=>{
+
+searchForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    togglesearch();
+})
+
+searchInput.addEventListener('input', (e)=>{
+    const input = e.target.value
+    console.log('input  : ',input);
     const query = searchInput.value;
-    const results = search(query);
-    displayResults(results);
+    const data = search(input);
+    displayResults(data);
 });
 
 
@@ -179,31 +199,30 @@ searchInput.addEventListener('input', ()=>{
 // dynamic shoes randering
 
 
-let output="";
-for(let item of cardData){
-    output+= `
-    <!-- card 1 -->
-    <div class=" w-full bg-white rounded-md p-4 border hover:scale-105 transition-all duration-300 border-gray-200 " id="card" >
-      <div class=" flex flex-col gap-4 ">
-        <div class=" w-full ">
-          <img src="${item.image}" alt="" />
-        </div>
+// let output="";
+// for(let item of cardData){
+//     output+= `
+//     <!-- card 1 -->
+//     <div class=" w-full bg-white rounded-md p-4 border hover:scale-105 transition-all duration-300 border-gray-200 " id="card" >
+//       <div class=" flex flex-col gap-4 ">
+//         <div class=" w-full ">
+//           <img src="${item.image}" alt="" />
+//         </div>
 
-        <!-- card-content  -->
-        <div class="flex flex-col space-y-3 w-full px-1">
-          <h1 class="ttext-lg">${item.text}</h1>
-          <h2 class="text-base ">${item.price}</h2>
-        </div>
-      </div>
-    </div>
+//         <!-- card-content  -->
+//         <div class="flex flex-col space-y-3 w-full px-1">
+//           <h1 class="ttext-lg">${item.text}</h1>
+//           <h2 class="text-base ">${item.price}</h2>
+//         </div>
+//       </div>
+//     </div>
    
-    `
-}
+//     `
+// }
+
+displayResults(cardData);
 
 
-
-
- document.querySelector('.cardContainer').innerHTML = output;
 
 
 
