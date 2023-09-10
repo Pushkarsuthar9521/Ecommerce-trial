@@ -13,9 +13,9 @@ const main = async () => {
     const page = await browser.newPage()
     await page.goto('https://www.myntra.com/')
 
-    await page.type('.desktop-searchBar', 'puma')
+    await page.type('.desktop-searchBar', 'puma shoes')
     await page.keyboard.press('Enter')
-    await page.waitForTimeout('5000')
+    await page.waitForTimeout('10000')
 
     const product = [];
     const $ = load(await page.content())
@@ -34,12 +34,12 @@ const main = async () => {
     // });
     
     $('.product-product').each(function(index, nameElement) {
-        var brandElement = $('.product-brand').eq(index);
+        var priceElement = $('.product-discountedPrice').eq(index);
         var imageElement = $('.product-imageSliderContainer').eq(index).find('img'); // Select the <img> element within .product-imageSliderContainer
         
         product.push({
-            name: $(nameElement).text(),
-            brand: $(brandElement).text(),
+            text: $(nameElement).text(),
+            price: $(priceElement).text(),
             image: imageElement.attr('src') // Get the src attribute of the <img> element
         });
     });
@@ -56,3 +56,5 @@ const main = async () => {
 }
 
 main()
+
+

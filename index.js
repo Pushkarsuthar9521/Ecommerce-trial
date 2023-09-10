@@ -2,7 +2,7 @@
 
 
 
-const cardData=[
+let cardData=[
     {
         'image':"./img/puma/shoes.png",
         'text':'Mercedes-AMG PETRONAS Maco SL 2.0 Unisex Driving Shoes',
@@ -63,16 +63,16 @@ const cardData=[
         'text':'Exotek NITRO Unisex Sneakers',
         'price': '₹4,999'
     },
-    {
-        'image':"./img/CART/s13.png",
-        'text':'MB.02 Lo Unisex Basketball Shoes',
-        'price': '₹8,999'
-    },
-    {
-        'image':"./img/CART/s14.png",
-        'text':'MB.02 Lo Unisex Basketball Shoes',
-        'price': '₹7,999'
-    },
+    // {
+    //     'image':"./img/CART/s13.png",
+    //     'text':'MB.02 Lo Unisex Basketball Shoes',
+    //     'price': '₹8,999'
+    // },
+    // {
+    //     'image':"./img/CART/s14.png",
+    //     'text':'MB.02 Lo Unisex Basketball Shoes',
+    //     'price': '₹7,999'
+    // },
 ];
 
 
@@ -153,19 +153,24 @@ const search = (query) =>{
 }
 
 
+
+
+
+
+
 const displayResults=(Data)=>{
         // const searchResults = document.getElementById('searchResults');
         let result ="";
         for(const item of Data){
       result +=  `
     
-    <div class=" w-full bg-white rounded-md p-4 border cursor-pointer border-gray-200" id="card" >
+    <div class=" w-full bg-white rounded-md p-4 border cursor-pointer border-gray-200 hover:scale-105 transition-all duration-300" id="card" >
       <div class=" flex flex-col gap-4">
         <div class=" w-full ">
           <img src="${item.image}" alt="" />
         </div>
         <div class="flex flex-col space-y-3 w-full px-1">
-          <h1 class="ttext-lg">${item.text}</h1>
+          <h1 class="font-semibold text-lg">${item.text}</h1>
           <h2 class="text-base ">${item.price}</h2>
         </div>
       </div>
@@ -175,6 +180,23 @@ const displayResults=(Data)=>{
         }
 
         document.querySelector('.searchResults').innerHTML = result;
+        
+        // let loadMore = `
+    
+        // <div class=" w-full bg-white rounded-md p-4 border cursor-pointer border-gray-200" id="card" >
+        //   <div class=" flex flex-col gap-4">
+        //     <div class=" w-[209px] h-[209px] ">
+            
+        //     </div>
+        //     <div class="flex flex-col space-y-3 w-full px-1">
+        //         h1
+        //     </div>
+        //   </div>
+        // </div>
+       
+        // `
+
+        // document.querySelector('.searchResults').appendChild = loadMore;
 }
 
 // event listner for the input field
@@ -220,11 +242,51 @@ searchInput.addEventListener('input', (e)=>{
 //     `
 // }
 
+
+
+
+// load more data from json file
+
+const loadMoreData = async ()=>{
+    try {
+        
+        console.log('inside try')
+        const res = await fetch('./product.json')
+        console.log('respose :',res)
+        const data = await res.json()
+        console.log('data :', data)
+        
+        cardData = [...cardData,...data]
+        displayResults(cardData)
+        const load = document.getElementById('load')
+        load.classList.add('hidden')
+        //     let result ="";
+        //     for(const item of data){
+            //   result +=  `
+    
+            // <div class=" w-full bg-white rounded-md p-4 border cursor-pointer border-gray-200 hover:scale-105 transition-all duration-300" id="card" >
+            //   <div class=" flex flex-col gap-4">
+    //     <div class=" w-full ">
+    //       <img src="${item.image}" alt="" />
+    //     </div>
+    //     <div class="flex flex-col space-y-3 w-full px-1">
+    //       <h1 class="font-semibold text-lg">${item.text}</h1>
+    //       <h2 class="text-base ">${item.price}</h2>
+    //     </div>
+    //   </div>
+    // </div>
+    
+    // `
+    //     }
+    
+    //     document.querySelector('.searchResults').appendChild = result;
+    
+} catch (error) {
+    console.error(error)
+    
+}
+}
+
+
+// on first load
 displayResults(cardData);
-
-
-
-
-
-
-
