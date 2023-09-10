@@ -9,67 +9,67 @@ const cardData=[
         'price': '₹5,999'
     },
     {
-        'image':"./img/cart/PUMA-Caven-2.png",
+        'image':"./img/CART/PUMA-Caven-2.png",
         'text':'PUMA Caven 2.0 75 Years Unisex Sneakers',
         'price': '₹7,999'
     },
     {
-        'image':"./img/cart/s1.png",
+        'image':"./img/CART/s1.png",
         'text':'PUMA x HARRDY SANDHU SlipstreamHi Unisex Sneakers',
         'price': '₹8,999'
     },
     {
-        'image':"./img/cart/s4.png",
+        'image':"./img/CART/s4.png",
         'text':'Caven 2.0 Unisex Sneakers',
         'price': '₹12,999'
     },
     {
-        'image':"./img/cart/s5.png",
+        'image':"./img/CART/s5.png",
         'text':'Caven 2.0 Unisex Sneakers',
         'price': '₹1,999'
     },
     {
-        'image':"./img/cart/s6.png",
+        'image':"./img/CART/s6.png",
         'text':'SOFTRIDE Pro Coast Unisex Running Shoes',
         'price': '₹20,999'
     },
     {
-        'image':"./img/cart/s7.png",
+        'image':"./img/CART/s7.png",
         'text':'Cliff Unisex Sneakers',
         'price': '₹2,999'
     },
     {
-        'image':"./img/cart/s8.png",
+        'image':"./img/CART/s8.png",
         'text':'Court Ultra 75 Years Unisex Sneakers',
         'price': '₹22,999'
     },
     {
-        'image':"./img/cart/s9.png",
+        'image':"./img/CART/s9.png",
         'text':'sInfusion Unisex Training Shoes',
         'price': '₹6,999'
     },
     {
-        'image':"./img/cart/s10.png",
+        'image':"./img/CART/s10.png",
         'text':'Trinity Lite Mens Sneakers',
         'price': '₹68,999'
     },
     {
-        'image':"./img/cart/s11.png",
+        'image':"./img/CART/s11.png",
         'text':"Basket Classic 75th Anniversary Edition Men's Sneakers",
         'price': '₹45,999'
     },
     {
-        'image':"./img/cart/s12.png",
+        'image':"./img/CART/s12.png",
         'text':'Exotek NITRO Unisex Sneakers',
         'price': '₹4,999'
     },
     {
-        'image':"./img/cart/s13.png",
+        'image':"./img/CART/s13.png",
         'text':'MB.02 Lo Unisex Basketball Shoes',
         'price': '₹8,999'
     },
     {
-        'image':"./img/cart/s14.png",
+        'image':"./img/CART/s14.png",
         'text':'MB.02 Lo Unisex Basketball Shoes',
         'price': '₹7,999'
     },
